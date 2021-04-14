@@ -1,0 +1,46 @@
+---
+- name: Install requirements (apt)
+  apt:
+    name: 
+      - neovim
+      - python3-pip
+      - nodejs
+      - clangd
+    update_cache: yes
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install requirements (pacman)
+  pacman:
+    name:
+      - neovim
+      - python-pip
+      - nodejs
+      - clang
+    state: present
+    update_cache: yes
+  when: ansible_facts['os_family'] == "ArchLinux"
+
+- name: Install requirements (dnf)
+  dnf:
+    name:
+      - neovim
+      - python3-pip
+      - nodejs
+      - clang
+    state: present
+    update_cache: yes
+  when: ansible_facts['os_family'] == "RedHat"
+
+- name: Install requirements (homebrew)
+  homebrew:
+    name: 
+      - neovim
+      - node
+    state: present
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install clang on macos
+  ansible.builtin.shell: xcode-select -install
+  when: ansible_facts['os_family'] == "Darwin"
+
+
