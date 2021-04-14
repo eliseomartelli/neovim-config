@@ -3,4 +3,4 @@
 
 - import_tasks: pip.yml
 
-- import_tasks: shell.yml.yml
+- import_tasks: shell.yml
