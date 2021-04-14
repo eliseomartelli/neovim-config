@@ -43,7 +43,7 @@
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Install clang on macos
-  shell: xcode-select -install
+  shell: xcode-select --install
   when: ansible_facts['os_family'] == "Darwin"
 
 
