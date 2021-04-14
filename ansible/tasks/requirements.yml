@@ -1,5 +1,6 @@
 ---
 - name: Install requirements (apt)
+  become: true
   apt:
     name: 
       - neovim
@@ -10,6 +11,7 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: Install requirements (pacman)
+  become: true
   pacman:
     name:
       - neovim
@@ -21,6 +23,7 @@
   when: ansible_facts['os_family'] == "ArchLinux"
 
 - name: Install requirements (dnf)
+  become: true
   dnf:
     name:
       - neovim
@@ -40,7 +43,7 @@
   when: ansible_facts['os_family'] == "Darwin"
 
 - name: Install clang on macos
-  ansible.builtin.shell: xcode-select -install
+  shell: xcode-select -install
   when: ansible_facts['os_family'] == "Darwin"
 
 
